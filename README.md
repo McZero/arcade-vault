@@ -2,15 +2,10 @@
 
 Es una plataforma para jugar online y competir por la mayor cantidad de puntos.
 
-## Usa Spec Driven Design
+## Commands
 
-Basado en /spec y /spec-impl
-
-Siguiendo las buenas practicas recomendadas aquí:
-https://github.com/Klerith/fernando-skills
-
-## Skills usadas
-
-```bash
-npx skills@latest add Klerith/fernando-skills
-```
+- `npm run dev` — iniciar servidor de desarrollo
+- `npm run build` — construir para producción
+- `npm run start` — servir build de producción
+- `npm run lint` — ESLint (configuración plana en `eslint.config.mjs`)
+- No hay un test runner configurado todavía.
