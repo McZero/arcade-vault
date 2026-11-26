@@ -4,15 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Arcade Vault: online game platform where players compete for points. Early stage (scaffold from Create Next App; only `app/layout.tsx`, `app/page.tsx`, `app/globals.css` exist). The README says the project follows spec-driven development (`/spec` and `/spec-impl` skills from `Klerith/fernando-skills`, installed with `npx skills@latest add Klerith/fernando-skills`).
+Arcade Vault: online game platform where players compete for points. Early stage (scaffold from Create Next App; only `app/layout.tsx`, `app/page.tsx`, `app/globals.css` exist).
 
-## Commands
+## Skills
 
-- `npm run dev` — start dev server
-- `npm run build` — production build
-- `npm run start` — serve production build
-- `npm run lint` — ESLint (flat config in `eslint.config.mjs`)
-- No test runner is configured yet.
+- `/spec` and `/spec-impl` from `Klerith/fernando-skills` (installed with `npx skills@latest add Klerith/fernando-skills`)
+- `/frontend-design` from `anthropics/skills` (installed with `npx skills add https://github.com/anthropics/skills --skill frontend-design`)
+
+Use allways /frontend-design for design user interfaces and user experience decisions.
 
 ## Stack and caveats
 
