@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${pixel.variable} ${jetbrains.variable} ${courier.variable}`}
     >
       <body>
