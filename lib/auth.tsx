@@ -29,13 +29,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Read the saved session only after mount to avoid hydration mismatches.
   useEffect(() => {
+    let saved: User | null = null;
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as User | null;
-        if (parsed && typeof parsed.name === "string") setUser(parsed);
-      }
+      const parsed = raw ? (JSON.parse(raw) as User | null) : null;
+      if (parsed && typeof parsed.name === "string") saved = parsed;
     } catch {}
+    if (!saved) return;
+    // Deferred so setState is not called synchronously in the effect body.
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (!cancelled) setUser(saved);
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const login = useCallback((u: User | null) => {
