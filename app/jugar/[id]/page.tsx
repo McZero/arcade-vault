@@ -1,29 +1,18 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import GamePlayer from "@/components/game-player";
 import { GAMES } from "@/lib/games";
+
+// Allow a blocking route: reading `params` before rendering lets `notFound()`
+// return a real HTTP 404 for unknown ids (inside <Suspense> it would be a 200).
+export const instant = false;
 
 export function generateStaticParams() {
   return GAMES.map((g) => ({ id: g.id }));
 }
 
-async function Player({ params }: Pick<PageProps<"/jugar/[id]">, "params">) {
-  const { id } = await params;
+export default async function PlayPage(props: PageProps<"/jugar/[id]">) {
+  const { id } = await props.params;
   const game = GAMES.find((g) => g.id === id);
   if (!game) notFound();
   return <GamePlayer game={game} />;
-}
-
-export default function PlayPage(props: PageProps<"/jugar/[id]">) {
-  return (
-    <Suspense
-      fallback={
-        <div className="pixel neon-cyan" style={{ padding: 80, textAlign: "center" }}>
-          CARGANDO_
-        </div>
-      }
-    >
-      <Player params={props.params} />
-    </Suspense>
-  );
 }

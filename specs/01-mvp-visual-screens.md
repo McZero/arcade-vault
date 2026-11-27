@@ -1,6 +1,6 @@
 # SPEC 01 — MVP visual de Arcade Vault (5 pantallas con juegos placeholder)
 
-> **Status:** Aprobado
+> **Status:** Implementado
 > **Depends on:** Ninguna (el tema CSS y las fuentes ya existen en `app/globals.css` y `app/layout.tsx`)
 > **Date:** 2026-11-26
 > **Objective:** Portar las 5 pantallas de `references/templates/` (biblioteca, detalle, reproductor, acceso y salón de la fama) a rutas del App Router de Next.js con datos mock y sin implementar ningún juego real.
@@ -120,29 +120,29 @@ Los nombres de componentes y rutas son decisión de esta spec; si el implementad
 
 ## Acceptance criteria
 
-- [ ] `npm run lint` termina sin errores ni warnings.
-- [ ] `npm run build` termina sin errores.
-- [ ] Existen las rutas `/`, `/juegos/bloque-buster`, `/jugar/bloque-buster`, `/acceso` y `/salon`, y cada una renderiza sin errores en la consola del navegador.
-- [ ] `/` muestra exactamente 8 tarjetas de juego con la portada CSS correspondiente.
-- [ ] Escribir "serp" en el buscador deja solo la tarjeta SERPENTINA; el chip "PUZZLE" deja solo CAÍDA; una búsqueda sin coincidencias muestra "NO HAY RESULTADOS".
-- [ ] Click en una tarjeta o en su botón JUGAR navega a `/juegos/[id]` del juego correcto.
-- [ ] `/juegos/inexistente` y `/jugar/inexistente` devuelven la página 404.
-- [ ] El detalle muestra tags, descripción larga, 3 estadísticas y 10 filas de "MEJORES PUNTUACIONES"; recargar muestra las mismas puntuaciones (determinista).
-- [ ] En `/acceso`, la pestaña "CREAR CUENTA" muestra el campo de correo y "INICIAR SESIÓN" lo oculta.
-- [ ] Entrar con usuario "px_kai" guarda `{"name":"PX_KAI"}` en `localStorage["av_user"]`, redirige a `/` y la navbar muestra `PX_KAI ▾`.
-- [ ] Con el campo usuario vacío, el login usa el nombre `PLAYER1`.
-- [ ] Click en `PX_KAI ▾` cierra sesión: se elimina `av_user` y la navbar vuelve a "Iniciar Sesión".
-- [ ] "JUGAR COMO INVITADO" redirige a `/` sin crear `av_user`.
-- [ ] Recargar con `av_user` presente mantiene la sesión sin error de hidratación en consola.
-- [ ] `/salon` muestra el podio con 3 posiciones, 12 filas en la tabla y cambia de datos al elegir otro juego en las tabs.
-- [ ] La fila "TU MEJOR MARCA EN …" aparece solo con sesión iniciada.
-- [ ] En `/jugar/[id]` la puntuación aumenta sola; PAUSA la detiene y muestra "EN PAUSA"; REANUDAR la reanuda.
-- [ ] FIN abre el modal "FIN DEL JUEGO" con la puntuación final; "GUARDAR PUNTUACIÓN" añade una entrada a `localStorage["av_scores"]` y muestra "PUNTUACIÓN GUARDADA_".
-- [ ] "JUGAR DE NUEVO" reinicia puntuación (0), vidas (3) y nivel (01); "VOLVER AL VAULT" navega a `/`.
-- [ ] El link activo de la navbar es "Biblioteca" en `/`, `/juegos/*` y `/jugar/*`, y "Salón de la Fama" en `/salon`.
-- [ ] A 375 px de ancho: los links de la navbar se ocultan, el botón `≡` abre el panel lateral con los links y se cierra al pulsar el fondo o un link; no hay scroll horizontal.
-- [ ] `<html>` tiene `lang="es"`.
-- [ ] La apariencia de cada pantalla coincide visualmente con `references/templates/Arcade Vault.html` abierto en el navegador (mismas clases, mismo texto).
+- [x] `npm run lint` termina sin errores ni warnings.
+- [x] `npm run build` termina sin errores.
+- [x] Existen las rutas `/`, `/juegos/bloque-buster`, `/jugar/bloque-buster`, `/acceso` y `/salon`, y cada una renderiza sin errores en la consola del navegador.
+- [x] `/` muestra exactamente 8 tarjetas de juego con la portada CSS correspondiente.
+- [x] Escribir "serp" en el buscador deja solo la tarjeta SERPENTINA; el chip "PUZZLE" deja solo CAÍDA; una búsqueda sin coincidencias muestra "NO HAY RESULTADOS".
+- [x] Click en una tarjeta o en su botón JUGAR navega a `/juegos/[id]` del juego correcto.
+- [x] `/juegos/inexistente` y `/jugar/inexistente` devuelven la página 404.
+- [x] El detalle muestra tags, descripción larga, 3 estadísticas y 10 filas de "MEJORES PUNTUACIONES"; recargar muestra las mismas puntuaciones (determinista).
+- [x] En `/acceso`, la pestaña "CREAR CUENTA" muestra el campo de correo y "INICIAR SESIÓN" lo oculta.
+- [x] Entrar con usuario "px_kai" guarda `{"name":"PX_KAI"}` en `localStorage["av_user"]`, redirige a `/` y la navbar muestra `PX_KAI ▾`.
+- [x] Con el campo usuario vacío, el login usa el nombre `PLAYER1`.
+- [x] Click en `PX_KAI ▾` cierra sesión: se elimina `av_user` y la navbar vuelve a "Iniciar Sesión".
+- [x] "JUGAR COMO INVITADO" redirige a `/` sin crear `av_user`.
+- [x] Recargar con `av_user` presente mantiene la sesión sin error de hidratación en consola.
+- [x] `/salon` muestra el podio con 3 posiciones, 12 filas en la tabla y cambia de datos al elegir otro juego en las tabs.
+- [x] La fila "TU MEJOR MARCA EN …" aparece solo con sesión iniciada.
+- [x] En `/jugar/[id]` la puntuación aumenta sola; PAUSA la detiene y muestra "EN PAUSA"; REANUDAR la reanuda.
+- [x] FIN abre el modal "FIN DEL JUEGO" con la puntuación final; "GUARDAR PUNTUACIÓN" añade una entrada a `localStorage["av_scores"]` y muestra "PUNTUACIÓN GUARDADA_".
+- [x] "JUGAR DE NUEVO" reinicia puntuación (0), vidas (3) y nivel (01); "VOLVER AL VAULT" navega a `/`.
+- [x] El link activo de la navbar es "Biblioteca" en `/`, `/juegos/*` y `/jugar/*`, y "Salón de la Fama" en `/salon`.
+- [x] A 375 px de ancho: los links de la navbar se ocultan, el botón `≡` abre el panel lateral con los links y se cierra al pulsar el fondo o un link; no hay scroll horizontal.
+- [x] `<html>` tiene `lang="es"`.
+- [x] La apariencia de cada pantalla coincide visualmente con `references/templates/Arcade Vault.html` abierto en el navegador (mismas clases, mismo texto).
 
 ## Decisions
 
@@ -159,14 +159,14 @@ Los nombres de componentes y rutas son decisión de esta spec; si el implementad
 
 ## Risks
 
-| Riesgo | Mitigación |
-| ------ | ---------- |
-| Error de hidratación por leer `localStorage` en el primer render | Leer `av_user` en `useEffect` tras montar; la navbar muestra "Iniciar Sesión" hasta entonces. |
-| Next 16.4.6 tiene cambios incompatibles con lo conocido (p. ej. `params` asíncrono, tipos `PageProps`) | Paso 0 obliga a leer `node_modules/next/dist/docs/` antes de escribir código. |
-| `Math.random` en el puntaje simulado rompe el render de servidor | Solo se ejecuta dentro de `setInterval` en un efecto de cliente. |
-| `localStorage` deshabilitado (modo privado) | Todo acceso va en `try/catch`; la app funciona sin persistir. |
-| En el reproductor, el nombre inicial depende de `user`, que llega tras montar | Sincronizar el nombre con `user` en un efecto cuando cambie, mientras no se haya guardado. |
-| El estado de la navbar (panel móvil abierto) persiste al navegar | Cerrar el panel en cada click de link. |
+| Riesgo                                                                                                 | Mitigación                                                                                    |
+| ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+| Error de hidratación por leer `localStorage` en el primer render                                       | Leer `av_user` en `useEffect` tras montar; la navbar muestra "Iniciar Sesión" hasta entonces. |
+| Next 16.4.6 tiene cambios incompatibles con lo conocido (p. ej. `params` asíncrono, tipos `PageProps`) | Paso 0 obliga a leer `node_modules/next/dist/docs/` antes de escribir código.                 |
+| `Math.random` en el puntaje simulado rompe el render de servidor                                       | Solo se ejecuta dentro de `setInterval` en un efecto de cliente.                              |
+| `localStorage` deshabilitado (modo privado)                                                            | Todo acceso va en `try/catch`; la app funciona sin persistir.                                 |
+| En el reproductor, el nombre inicial depende de `user`, que llega tras montar                          | Sincronizar el nombre con `user` en un efecto cuando cambie, mientras no se haya guardado.    |
+| El estado de la navbar (panel móvil abierto) persiste al navegar                                       | Cerrar el panel en cada click de link.                                                        |
 
 ## What is **not** in this spec
 
